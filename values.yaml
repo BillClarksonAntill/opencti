@@ -305,7 +305,9 @@ opensearch:
       cpu: "500m"
 
   persistence:
-    enabled: false
+    enabled: true
+    size: 50Gi
+    storageClass: managed-csi
 
 ##
 # MINIO
@@ -323,7 +325,9 @@ minio:
       memory: 512Mi
 
   persistence:
-    enabled: false
+    enabled: true
+    size: 50Gi
+    storageClass: managed-csi
 
 ##
 # RABBITMQ
@@ -348,7 +352,9 @@ rabbitmq:
     enabled: false
 
   persistence:
-    enabled: false
+    enabled: true
+    size: 50Gi
+    storageClass: managed-csi
 
 ##
 # REDIS

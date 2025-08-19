@@ -1,0 +1,30 @@
+# pod-security-standards.yaml
+# 1) Apply PSS to the existing 'opencti' namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: opencti
+  labels:
+    # Enforce: block pods that violate 'baseline'
+    pod-security.kubernetes.io/enforce: baseline
+    # Also show warnings/audit as if 'restricted' were enforced
+    pod-security.kubernetes.io/warn: restricted
+    pod-security.kubernetes.io/audit: restricted
+    # Choose the policy version matching your cluster minor (use 'latest' if unsure)
+    pod-security.kubernetes.io/enforce-version: v1.32
+    pod-security.kubernetes.io/warn-version: v1.32
+    pod-security.kubernetes.io/audit-version: v1.32
+
+---
+# 2) (Optional) Example of a namespace template you can copy for future workloads
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: example-ns
+  labels:
+    pod-security.kubernetes.io/enforce: baseline
+    pod-security.kubernetes.io/warn: restricted
+    pod-security.kubernetes.io/audit: restricted
+    pod-security.kubernetes.io/enforce-version: v1.32
+    pod-security.kubernetes.io/warn-version: v1.32
+    pod-security.kubernetes.io/audit-version: v1.32
